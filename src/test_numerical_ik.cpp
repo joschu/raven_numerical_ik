@@ -1,5 +1,6 @@
 #include <openrave/openrave.h>
 #include <openrave-core.h>
+#include "GeneralIK.h"
 using namespace OpenRAVE;
 using namespace std;
 
@@ -8,7 +9,16 @@ int main(int argc, char* argv[]) {
 	EnvironmentBasePtr env = RaveCreateEnvironment();
 	env->Load("/home/joschu/Dropbox/Proj/Raven/collada/ravenII_2arm.dae");
 	OpenRAVE::ViewerBasePtr viewer = OpenRAVE::RaveCreateViewer(env, "qtcoin");
-	int ind_arr[7] = {};
-	double val_arr[7] = {};
+	const size_t n_joints = 16;
+	double val_arr[n_joints] = {0, 0.51637494564056396, 1.627062201499939, -0.049243684858083725, -7.1537528128828853e-05, 0.00013125920668244362, 0.92412233352661133, 0.89203071594238281,
+						        0, 0.67030531167984009, 1.8251663446426392, -0.062828727066516876, -0.0041922205127775669, 0.0022199407685548067, -0.65188699960708618, -0.66819572448730469};
+	vector<double> joint_vals;
+	joint_vals.assign(val_arr, val_arr+n_joints);
+	RobotBasePtr raven = env->GetRobot("raven_2");
+	raven->SetDOFValues(joint_vals);
+	vector<RobotBase::ManipulatorPtr> manips;
+	raven->GetManipulators(manips);
+	RobotBase::ManipulatorPtr leftarm = manips[0];
+
 	viewer->main(true);
 }
