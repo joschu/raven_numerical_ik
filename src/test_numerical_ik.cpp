@@ -1,8 +1,9 @@
 #include <openrave/openrave.h>
 #include <openrave-core.h>
+#include "stdafx.h"
 #include "GeneralIK.h"
-using namespace OpenRAVE;
 using namespace std;
+using namespace OpenRAVE;
 
 int main(int argc, char* argv[]) {
 	RaveInitialize(true);
@@ -16,8 +17,8 @@ int main(int argc, char* argv[]) {
 	joint_vals.assign(val_arr, val_arr+n_joints);
 	RobotBasePtr raven = env->GetRobot("raven_2");
 	raven->SetDOFValues(joint_vals);
-	vector<RobotBase::ManipulatorPtr> manips;
-	raven->GetManipulators(manips);
+	vector<RobotBase::ManipulatorPtr> manips = 	raven->GetManipulators();
+	cout << manips.size() << endl;;
 	RobotBase::ManipulatorPtr leftarm = manips[0];
 
 	viewer->main(true);
