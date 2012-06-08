@@ -22,13 +22,16 @@ int main(int argc, char* argv[]) {
 	RobotBase::ManipulatorPtr leftarm = manips[0];
 	RobotBase::ManipulatorPtr rightarm = manips[1];
 
+	raven->SetActiveManipulator(0);
+	raven->SetActiveDOFs(leftarm->GetArmIndices());
 	GeneralIK iksolver(env);
 	iksolver.Init(leftarm);
 
 	Transform current_pose = leftarm->GetTransform();
+	cout << "current_pose: " << current_pose << endl;
 	vector<double> current_vals;
 	current_vals.assign(&joint_vals[1], &joint_vals[7]);
-	vector<double> free_params(1);
+	vector<double> free_params(1,6);
 	boost::shared_ptr< vector<double> > result( new vector<double> );
 	iksolver.Solve(IkParameterization(current_pose), current_vals, free_params, 0, result);
 	viewer->main(true);
