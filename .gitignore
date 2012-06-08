@@ -11,3 +11,4 @@ err_network.log
 *.so
 *.o
 .*project
+*.cmake
