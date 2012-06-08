@@ -1,0 +1,15 @@
+<package>
+  <description brief="raven_numerical_ik">
+
+     raven_numerical_ik
+
+  </description>
+  <author>surgical</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raven_numerical_ik</url>
+  <depend package="roscpp"/>
+
+</package>
+
+
