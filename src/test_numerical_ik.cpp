@@ -8,7 +8,7 @@ using namespace OpenRAVE;
 int main(int argc, char* argv[]) {
 	RaveInitialize(true);
 	EnvironmentBasePtr env = RaveCreateEnvironment();
-	env->Load("/home/joschu/Dropbox/Proj/Raven/collada/ravenII_2arm.dae");
+	env->Load("/home/joschu/Dropbox/Proj/Raven/collada/ravenII_2arm.xml");
 	OpenRAVE::ViewerBasePtr viewer = OpenRAVE::RaveCreateViewer(env, "qtcoin");
 	const size_t n_joints = 16;
 	double val_arr[n_joints] = {0, 0.51637494564056396, 1.627062201499939, -0.049243684858083725, -7.1537528128828853e-05, 0.00013125920668244362, 0.92412233352661133, 0.89203071594238281,
@@ -20,6 +20,16 @@ int main(int argc, char* argv[]) {
 	vector<RobotBase::ManipulatorPtr> manips = 	raven->GetManipulators();
 	cout << manips.size() << endl;;
 	RobotBase::ManipulatorPtr leftarm = manips[0];
+	RobotBase::ManipulatorPtr rightarm = manips[1];
 
+	GeneralIK iksolver(env);
+	iksolver.Init(leftarm);
+
+	Transform current_pose = leftarm->GetTransform();
+	vector<double> current_vals;
+	current_vals.assign(&joint_vals[1], &joint_vals[7]);
+	vector<double> free_params(1);
+	boost::shared_ptr< vector<double> > result( new vector<double> );
+	iksolver.Solve(IkParameterization(current_pose), current_vals, free_params, 0, result);
 	viewer->main(true);
 }
