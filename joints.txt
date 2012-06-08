@@ -1,0 +1,15 @@
+header: 
+  seq: 11964
+  stamp: 
+    secs: 1339113934
+    nsecs: 462291176
+  frame_id: ''
+name: ['shoulder_L', 'elbow_L', 'insertion_L', 'tool_roll_L', 'wrist_joint_L', 'grasper_joint_1_L', 'grasper_joint_2_L', 'shoulder_R', 'elbow_R', 'insertion_R', 'tool_roll_R', 'wrist_joint_R', 'grasper_joint_1_R', 'grasper_joint_2_R', 'shoulder_L2', 'elbow_L2', 'insertion_L2', 'tool_roll_L2', 'wrist_joint_L2', 'grasper_joint_1_L2', 'grasper_joint_2_L2', 'shoulder_R2', 'elbow_R2', 'insertion_R2', 'tool_roll_R2', 'wrist_joint_R2', 'grasper_joint_1_R2', 'grasper_joint_2_R2']
+position: [
+0.51637494564056396, 1.627062201499939, -0.049243684858083725, -7.1537528128828853e-05, 0.00013125920668244362, 0.92412233352661133, 0.89203071594238281, 
+0.51638913154602051, 1.6269978284835815, -0.049242772161960602, 0.0, 			0.0, 			0.7850000262260437, 0.7850000262260437, 
+
+0.67030531167984009, 1.8251663446426392, -0.062828727066516876, -0.0041922205127775669, 0.0022199407685548067, -0.65188699960708618, -0.66819572448730469, 
+0.64993029832839966, 1.8356871604919434, -0.059656534343957901, 0.0, 			0.0, 			-0.57849997282028198, -0.57849997282028198]
+velocity: []
+effort: []
